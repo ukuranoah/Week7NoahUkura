@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Week5NoahUkura
+namespace Week6NoahUkura
 {
     static class Program
     {
@@ -17,6 +17,17 @@ namespace Week5NoahUkura
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+            PersonV2 temp = new PersonV2();
+            if (!temp.Feedback.Contains("Error:"))
+            {
+                string strFeedback = temp.AddRecord();
+                //lblFeedback.Text = strFeedback;
+            }
+            else
+            {
+                //lblFeedback.Text = temp.Feedback;
+            }
+            BasicTools.Pause();
         }
     }
 }

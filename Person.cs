@@ -1,15 +1,25 @@
-﻿using lab4;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace Week5NoahUkura
+namespace Week6NoahUkura
 {
-    class Person
+    public class Person
     {
-        private string fName, mName, lName, street1, street2, city, state, zip, phone, email;
+        protected string feedback;
+        private string fName;
+        private string mName; 
+        private string lName; 
+        private string street1;
+        private string street2;
+        private string city; 
+        private string state; 
+        private string zip;
+        private string phone;
+        private string email;
+
         public string FName
         {
             get
@@ -18,7 +28,15 @@ namespace Week5NoahUkura
             }
             set
             {
-                fName = value;
+                if (ValidationLibrary.IsItFilledIn(value))
+                {
+                    fName = value;
+                }
+                else
+                {
+                    feedback += "\nError: Please enter the first name";
+                }
+                
             }
         }
         public string MName
@@ -29,7 +47,14 @@ namespace Week5NoahUkura
             }
             set
             {
-                mName = value;
+                if (ValidationLibrary.IsItFilledIn(value))
+                {
+                    mName = value;
+                }
+                else
+                {
+                    feedback += "\nError: Please enter the middle name";
+                }
             }
         }
         public string LName
@@ -40,7 +65,14 @@ namespace Week5NoahUkura
             }
             set
             {
-                lName = value;
+                if (ValidationLibrary.IsItFilledIn(value))
+                {
+                    lName = value;
+                }
+                else
+                {
+                    feedback += "\nError: Please enter the last name";
+                }
             }
         }
         public string Street1
@@ -51,7 +83,14 @@ namespace Week5NoahUkura
             }
             set
             {
-                street1 = value;
+                if (ValidationLibrary.IsItFilledIn(value))
+                {
+                    street1 = value;
+                }
+                else
+                {
+                    feedback += "\nError: Please enter the street1 name";
+                }
             }
         }
         public string Street2
@@ -62,7 +101,14 @@ namespace Week5NoahUkura
             }
             set
             {
-                street2 = value;
+                if (ValidationLibrary.IsItFilledIn(value))
+                {
+                    street2 = value;
+                }
+                else
+                {
+                    feedback += "\nError: Please enter the street2 name";
+                }
             }
         }
         public string City
@@ -73,7 +119,14 @@ namespace Week5NoahUkura
             }
             set
             {
-                city = value;
+                if (ValidationLibrary.IsItFilledIn(value))
+                {
+                    city = value;
+                }
+                else
+                {
+                    feedback += "\nError: Please enter the city name";
+                }
             }
         }
         public string State
@@ -84,7 +137,22 @@ namespace Week5NoahUkura
             }
             set
             {
-                state = value;
+                if (ValidationLibrary.IsItFilledIn(value))
+                {
+                    state = value;
+                }
+                else
+                {
+                    feedback += "\nError: Please enter the state name";
+                }
+                if (ValidationLibrary.ValidState(value))
+                {
+                    state = value;
+                }
+                else
+                {
+                    feedback += "\nError: Invalid state name, please enter the state in two letters. Rhode Island (RI)";
+                }
             }
         }
         public string Zip
@@ -95,7 +163,22 @@ namespace Week5NoahUkura
             }
             set
             {
-                zip = value;
+                if (ValidationLibrary.IsItFilledIn(value))
+                {
+                    zip = value;
+                }
+                else
+                {
+                    feedback += "\nError: Please enter the zip code";
+                }
+                if (ValidationLibrary.ValidZip(value))
+                {
+                    zip = value;
+                }
+                else
+                {
+                    feedback += "\nError: Invalid Zip, Please enter a 5 digit number";
+                }
 
             }
         }
@@ -107,13 +190,21 @@ namespace Week5NoahUkura
             }
             set
             {
+                if (ValidationLibrary.IsItFilledIn(value))
+                {
+                    phone = value;
+                }
+                else
+                {
+                    feedback += "\nError: Please enter the phone number";
+                }
                 if (ValidationLibrary.ValidPhone(value))
                 {
                     phone = value;
                 }
                 else
                 {
-                    Feedback = "ERROR: Invalid Phone Format. Enter 10 or less numbers";
+                    feedback += "\nError: Invalid Phone Format. Enter 10 numbers";
                 }
 
             }
@@ -126,18 +217,50 @@ namespace Week5NoahUkura
             }
             set
             {
+                if (ValidationLibrary.IsItFilledIn(value))
+                {
+                    email = value;
+                }
+                else
+                {
+                    feedback += "\nError: Please enter the email address";
+                }
                 if (ValidationLibrary.ValidEmail(value))
                 {
                     email = value;
                 }
                 else
                 {
-                   Feedback = "ERROR: Invalid Email Format.";
+                    feedback += "\nError: Invalid Email Format. ex. John@email.com";
                 }
                 
             }
 
         }
-        public string Feedback { get; internal set; }
+        public string Feedback
+        {
+            get
+            {
+                return feedback;
+            }
+            //set
+            //{
+            //    feedback = value;
+            //}
+        }
+        public Person()
+        {
+            fName = "";
+            mName = "";
+            lName = "";
+            street1 = "";
+            street2 = "";
+            city = "";
+            state = "";
+            phone = "";
+            email = "";
+            feedback = "";
+        }
     }
+    
 }
