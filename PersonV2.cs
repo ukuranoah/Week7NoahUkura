@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Data;
 
 namespace Week6NoahUkura
 {
@@ -79,7 +79,7 @@ namespace Week6NoahUkura
             Conn.ConnectionString = @"Server=sql.neit.edu\sqlstudentserver,4500;Database=SE245_NUkura;User Id=SE245_NUkura;Password=008008083";
 
 
-            string strSQL = "INSERT INTO PersonV2 (FName, MName, LName, Street1, Street2, City, State, Zip, Phone, Email) VALUES (@FName, @MName, @LName, @Street1, @Street2, @City, @State, @Zip, @Phone, @Email)";
+            string strSQL = "INSERT INTO PersonssV2 (FName, MName, LName, Street1, Street2, City, State, Zip, Phone, Email) VALUES (@FName, @MName, @LName, @Street1, @Street2, @City, @State, @Zip, @Phone, @Email)";
             SqlCommand comm = new SqlCommand();
             comm.CommandText = strSQL;
             comm.Connection = Conn;
@@ -97,7 +97,7 @@ namespace Week6NoahUkura
             {
                 Conn.Open();
                 int intRecs = comm.ExecuteNonQuery();
-                stringResult = "Success: Inserted {intRecs} records";
+                stringResult = $"Success: Inserted {intRecs} records";
                 Conn.Close();
             }
             catch(Exception err)

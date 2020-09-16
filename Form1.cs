@@ -72,11 +72,12 @@ namespace Week6NoahUkura
             if (temp.Feedback.Contains("Error:"))
             {
                 lblFeedback.Text = temp.Feedback;
+                
             }
             else
             {
                 lblFeedback.Text = "Person Added: " + temp.FName + " " + temp.MName + " " + temp.LName + "\n" + temp.Street1 + ", " + temp.Street2 + "\n" + temp.City + " " +temp.State + " " + temp.Zip + "\n" + temp.Email + " " + temp.Phone + "\n" + temp.IG + "\n" + temp.CellNum;
-
+                lblFeedback.Text = temp.AddRecord();
             }
             
             
