@@ -57,6 +57,8 @@
             this.txtMember = new System.Windows.Forms.TextBox();
             this.txtRewards = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.lblPersonV2_ID = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -376,11 +378,30 @@
             this.label16.TabIndex = 37;
             this.label16.Text = "Customer";
             // 
+            // lblPersonV2_ID
+            // 
+            this.lblPersonV2_ID.AutoSize = true;
+            this.lblPersonV2_ID.Location = new System.Drawing.Point(667, 559);
+            this.lblPersonV2_ID.Name = "lblPersonV2_ID";
+            this.lblPersonV2_ID.Size = new System.Drawing.Size(0, 13);
+            this.lblPersonV2_ID.TabIndex = 38;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(604, 559);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(57, 13);
+            this.label17.TabIndex = 39;
+            this.label17.Text = "Person ID:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1028, 612);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.lblPersonV2_ID);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.txtRewards);
             this.Controls.Add(this.txtMember);
@@ -461,6 +482,8 @@
         private System.Windows.Forms.TextBox txtMember;
         private System.Windows.Forms.TextBox txtRewards;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lblPersonV2_ID;
+        private System.Windows.Forms.Label label17;
     }
 }
 

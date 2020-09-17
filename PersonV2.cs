@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-
 namespace Week6NoahUkura
 {
     class PersonV2:Person
@@ -72,6 +71,7 @@ namespace Week6NoahUkura
             ig = "";
             cellnum = "";
         }
+
         public string AddRecord()
         {
             string stringResult = "";
@@ -109,6 +109,51 @@ namespace Week6NoahUkura
 
             }
             return stringResult;
-        }    
+        }
+        public DataSet SearchARecord(String strFName, String strLName)
+        {
+            DataSet ds = new DataSet();
+            SqlCommand comm = new SqlCommand();
+            String strSQL = "SELECT PersonID, FName, LName FROM PersonssV2 WHERE 0=0";
+            if (strFName.Length > 0)
+            {
+                strSQL += " AND FName LIKE @FName";
+                comm.Parameters.AddWithValue("@FName", "%" + strFName + "%");
+            }
+            if (strLName.Length > 0)
+            {
+                strSQL += " AND LName LIKE @LNAME";
+                comm.Parameters.AddWithValue("@LName", "%" + strLName + "%");
+            }
+
+            SqlConnection conn = new SqlConnection();
+            string strConn = @"Server=sql.neit.edu\sqlstudentserver,4500;Database=SE245_NUkura;User Id=SE245_NUkura;Password=008008083";
+            conn.ConnectionString = strConn;
+            comm.Connection = conn;
+            comm.CommandText = strSQL;
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = comm;
+
+            conn.Open();
+            da.Fill(ds, "PersonV2_Temp");
+            conn.Close();
+
+            return ds;
+
+        }
+        public SqlDataReader FindOneRecord(int intPersonV2_ID)
+        {
+            SqlConnection conn = new SqlConnection();
+            SqlCommand comm = new SqlCommand();
+            string strConn = @"Server=sql.neit.edu\sqlstudentserver,4500;Database=SE245_NUkura;User Id=SE245_NUkura;Password=008008083";
+            string sqlstring = "SELECT * FROM PersonssV2 WHERE PersonID = @PersonV2_ID;";
+            conn.ConnectionString = strConn;
+            comm.Connection = conn;
+            comm.CommandText = sqlstring;
+            comm.Parameters.AddWithValue("@PersonV2_ID", intPersonV2_ID);
+            conn.Open();
+            return comm.ExecuteReader();
+
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace Week6NoahUkura
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new ControlPanel());
             /*PersonV2 temp = new PersonV2();
             if (!temp.Feedback.Contains("Error:"))
             {
