@@ -59,6 +59,8 @@
             this.label16 = new System.Windows.Forms.Label();
             this.lblPersonV2_ID = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -250,12 +252,13 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(105, 462);
+            this.btnAdd.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnAdd.Location = new System.Drawing.Point(73, 481);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.Size = new System.Drawing.Size(89, 31);
             this.btnAdd.TabIndex = 23;
-            this.btnAdd.Text = "Submit Person";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Text = "Insert Person";
+            this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // txtPhone
@@ -395,11 +398,35 @@
             this.label17.TabIndex = 39;
             this.label17.Text = "Person ID:";
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnUpdate.Location = new System.Drawing.Point(269, 481);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(89, 31);
+            this.btnUpdate.TabIndex = 40;
+            this.btnUpdate.Text = "Update Person";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnDelete.Location = new System.Drawing.Point(446, 481);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(89, 31);
+            this.btnDelete.TabIndex = 41;
+            this.btnDelete.Text = "Delete Person";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1028, 612);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.lblPersonV2_ID);
             this.Controls.Add(this.label16);
@@ -439,6 +466,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
+            //this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -484,6 +512,8 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label lblPersonV2_ID;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
 

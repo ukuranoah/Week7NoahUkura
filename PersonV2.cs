@@ -11,7 +11,7 @@ namespace Week6NoahUkura
     {   
         private string ig;
         private string cellnum;
-
+        public int PersonID;
         public string IG
         {
             
@@ -110,6 +110,47 @@ namespace Week6NoahUkura
             }
             return stringResult;
         }
+        public string UpdateARecord()
+        {
+            int intRecords = 0;
+            string stringResult = "";
+            string strSQL = "UPDATE PersonssV2 SET FName = @FName, MName = @MName, LName = @LName, Street1 = @Street1, Street2 = @Street2, City = @City, State = @State, Zip = @Zip, Phone = @Phone, Email = @Email WHERE PersonID = @PersonID;";
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = @"Server=sql.neit.edu\sqlstudentserver,4500;Database=SE245_NUkura;User Id=SE245_NUkura;Password=008008083";
+
+
+            
+            SqlCommand comm = new SqlCommand();
+            comm.CommandText = strSQL;
+            comm.Connection = conn;
+            comm.Parameters.AddWithValue("@FName", FName);
+            comm.Parameters.AddWithValue("@MName", MName);
+            comm.Parameters.AddWithValue("@LName", LName);
+            comm.Parameters.AddWithValue("@Street1", Street1);
+            comm.Parameters.AddWithValue("@Street2", Street2);
+            comm.Parameters.AddWithValue("@City", City);
+            comm.Parameters.AddWithValue("@State", State);
+            comm.Parameters.AddWithValue("@Zip", Zip);
+            comm.Parameters.AddWithValue("@Phone", Phone);
+            comm.Parameters.AddWithValue("@Email", Email);
+            comm.Parameters.AddWithValue("@PersonID", PersonID);
+            try
+            {
+                conn.Open();
+                intRecords = comm.ExecuteNonQuery();
+                stringResult = intRecords.ToString() + " Records Updated";
+                
+            }
+            catch (Exception err)
+            {
+                stringResult = "Error: " + err.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return stringResult;
+        }
         public DataSet SearchARecord(String strFName, String strLName)
         {
             DataSet ds = new DataSet();
@@ -154,6 +195,33 @@ namespace Week6NoahUkura
             conn.Open();
             return comm.ExecuteReader();
 
+        }
+        public string DeleteOneRecord(int intPersonV2_ID)
+        {
+            Int32 intRecords = 0;
+            string strResult = "";
+            SqlConnection conn = new SqlConnection();
+            SqlCommand comm = new SqlCommand();
+            string sqlString = "DELETE FROM PersonssV2 WHERE PersonID = @PersonID;";
+            conn.ConnectionString = @"Server=sql.neit.edu\sqlstudentserver,4500;Database=SE245_NUkura;User Id=SE245_NUkura;Password=008008083";
+            comm.Connection = conn;
+            comm.CommandText = sqlString;
+            comm.Parameters.AddWithValue("@PersonID", intPersonV2_ID);
+            try
+            {
+                conn.Open();
+                intRecords = comm.ExecuteNonQuery();
+                strResult = intRecords.ToString() + " Records Deleted";
+            }
+            catch(Exception err)
+            {
+                strResult = "Error:" + err.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return strResult;
         }
     }
 }

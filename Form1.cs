@@ -104,9 +104,44 @@ namespace Week6NoahUkura
             {
                 lblFeedback.Text = "Person Added: " + temp.FName + " " + temp.MName + " " + temp.LName + "\n" + temp.Street1 + ", " + temp.Street2 + "\n" + temp.City + " " + temp.State + " " + temp.Zip + "\n" + temp.Email + " " + temp.Phone + "\n" + temp.IG + "\n" + temp.CellNum;
                 lblFeedback.Text = temp.AddRecord();
+                //lblFeedback.Text = UpdateARecord();
             }
         }
 
-       
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            PersonV2 temp = new PersonV2();
+            temp.FName = txtFName.Text;
+            temp.MName = txtMName.Text;
+            temp.LName = txtLName.Text;
+            temp.Street1 = txtStreet1.Text;
+            temp.Street2 = txtStreet2.Text;
+            temp.City = txtCity.Text;
+            temp.State = txtState.Text;
+            temp.Zip = txtZip.Text;
+            temp.Phone = txtPhone.Text;
+            temp.Email = txtEmail.Text;
+            temp.CellNum = txtCell.Text;
+            temp.IG = txtIG.Text;
+
+            
+            if (!temp.Feedback.Contains("Error:"))
+            {
+                lblFeedback.Text = temp.UpdateARecord();
+            }
+            else
+            {
+                lblFeedback.Text = temp.Feedback;
+            }
+        
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            Int32 intPersonV2_ID = Convert.ToInt32(lblPersonV2_ID.Text);
+            PersonV2 temp = new PersonV2();
+            lblFeedback.Text = temp.DeleteOneRecord(intPersonV2_ID);
+        }
+
     }
 }
